@@ -1,0 +1,6 @@
+Date,Product,Quantity,Unit Price
+2026-01-01, Laptop ,2,"₹5,000"
+2026-01-02,,,-10
+2026-01-02,,,-10
+
+not-a-date,Mouse,1,25

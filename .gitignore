@@ -1,0 +1,38 @@
+# R and RStudio files
+.Rhistory
+.RData
+.Ruserdata
+.Rproj.user/
+*.Rproj
+
+# VS Code settings and workspace files
+.vscode/
+
+# Temporary and operating-system files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Generated datasets and analysis outputs
+data/raw/*
+data/processed/*
+reports/*
+!data/raw/kaggle_superstore_sales.csv
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!reports/.gitkeep
+
+# Logs
+*.log
+logs/
+
+# Local environment and configuration files
+.env
+.env.*
+!.env.example
+*.local
+config.local.*

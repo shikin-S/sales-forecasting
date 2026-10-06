@@ -1,0 +1,5 @@
+{"model":"linear_regression","period":7}
+{"model":"exponential_smoothing","period":7}
+{"model":"holt_winters","period":7}
+{"model":"arima","period":7}
+{"model":"automatic","period":7}

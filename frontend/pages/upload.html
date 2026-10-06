@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload Dataset | Sales Forecasting &amp; Analysis</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body class="app-body">
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="../index.html"><span class="brand-mark">SF</span><span>Sales Forecasting<br><strong>&amp; Analysis</strong></span></a>
+      <nav class="sidebar-nav" aria-label="Application navigation">
+        <p class="nav-label">Workspace</p>
+        <a class="nav-link" href="dashboard.html"><span>01</span>Dashboard</a>
+        <a class="nav-link active" aria-current="page" href="upload.html"><span>02</span>Upload Dataset</a>
+        <a class="nav-link" href="analysis.html"><span>03</span>Sales Analysis</a>
+        <a class="nav-link" href="forecast.html"><span>04</span>Forecast</a>
+        <a class="nav-link" href="reports.html"><span>05</span>Reports</a>
+      </nav>
+      <p class="sidebar-note">R-powered workspace<br><span>Frontend prototype</span></p>
+    </aside>
+    <main class="page-content">
+      <header class="page-header">
+        <div>
+          <p class="section-kicker">Workspace / Input</p>
+          <h1>Upload Sales Dataset</h1>
+          <p>Upload a structured sales CSV. The backend profiles its columns and maps supported fields automatically.</p>
+        </div>
+      </header>
+      <section class="upload-panel" aria-labelledby="upload-title">
+        <div class="upload-intro">
+          <p class="section-kicker">Dataset intake</p>
+          <h2 id="upload-title">Bring your sales history into the workspace</h2>
+          <p>Choose a file or drop it into the area below. The CSV will be inspected, mapped to the internal sales schema, and processed by the local R API.</p>
+        </div>
+        <div class="drop-zone" id="drop-zone" tabindex="0" role="button" aria-label="Choose a CSV file by clicking or dragging it here">
+          <span class="upload-icon" aria-hidden="true">↑</span>
+          <h3>Drop your CSV file here</h3>
+          <p>or choose a file from your computer</p>
+          <label class="button" for="dataset-file">Choose CSV file</label>
+          <input id="dataset-file" type="file" accept=".csv,text/csv">
+          <p class="file-limit">Maximum recommended file size: 10 MB</p>
+        </div>
+        <div class="upload-feedback" aria-live="polite">
+          <strong id="selected-file">No file selected</strong>
+          <span id="upload-status">Select a CSV file to begin frontend validation.</span>
+        </div>
+        <ol class="processing-steps" id="processing-steps" aria-label="Dataset processing progress">
+          <li data-step="uploading">Uploading</li><li data-step="validating">Validating</li>
+          <li data-step="cleaning">Cleaning data</li><li data-step="generating">Generating processed dataset</li>
+          <li data-step="complete">Complete</li>
+        </ol>
+        <button class="button button-primary" id="upload-button" type="button">Upload and process dataset</button>
+        <section class="upload-result" id="upload-result" aria-labelledby="result-title" hidden>
+          <div class="result-heading">
+            <div><p class="section-kicker">Processing response</p><h2 id="result-title">Dataset Processing Summary</h2></div>
+            <strong class="success-label">✓ Dataset successfully processed</strong>
+          </div>
+          <div class="result-grid upload-result-grid">
+            <article><span>Original Records</span><strong id="result-original-rows">--</strong></article>
+            <article><span>Clean Records</span><strong id="result-final-rows">--</strong></article>
+            <article><span>Exact Duplicate Rows</span><strong id="result-duplicates">--</strong></article>
+            <article><span>Empty Rows Removed</span><strong id="result-empty-rows">--</strong></article>
+            <article><span>Missing Values</span><strong id="result-missing">-- → --</strong></article>
+            <article><span>Invalid Values</span><strong id="result-invalid">--</strong></article>
+            <article><span>Sales Values Calculated</span><strong id="result-calculated">--</strong></article>
+            <article><span>Processed Dataset</span><strong id="result-file">--</strong></article>
+          </div>
+          <section class="dataset-profile" aria-labelledby="profile-title">
+            <h3 id="profile-title">Dataset understanding</h3>
+            <dl class="dataset-profile-summary">
+              <div><dt>Dataset type</dt><dd id="profile-type">--</dd></div>
+              <div><dt>Profiled rows and columns</dt><dd id="profile-shape">--</dd></div>
+              <div><dt>Date range</dt><dd id="profile-date-range">--</dd></div>
+              <div><dt>Forecasting</dt><dd id="profile-forecasting">--</dd></div>
+              <div><dt>Sales analysis</dt><dd id="profile-sales-analysis">--</dd></div>
+              <div><dt>Duplicate transaction IDs</dt><dd id="profile-duplicate-ids">--</dd></div>
+            </dl>
+            <h4>Detected fields and confidence</h4>
+            <ul class="detected-fields" id="detected-fields"></ul>
+            <div class="dataset-profile-lists">
+              <div><h4>Available dimensions</h4><ul id="profile-dimensions"></ul></div>
+              <div><h4>Missing optional fields</h4><ul id="profile-missing-fields"></ul></div>
+              <div><h4>Derived fields</h4><ul id="profile-derived-fields"></ul></div>
+            </div>
+            <h4>Column profile</h4>
+            <ul class="profile-column-details" id="profile-column-details"></ul>
+            <p class="processing-warning" id="processing-warning" aria-live="polite"></p>
+          </section>
+        </section>
+      </section>
+    </main>
+  </div>
+  <script src="../js/app.js"></script>
+  <script src="../js/upload.js"></script>
+</body>
+</html>
